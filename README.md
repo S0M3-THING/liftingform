@@ -88,7 +88,15 @@ This prints video metadata, the score, metrics, issues, and recommendations. No 
 python -m pytest -q
 ```
 
-The existing tests cover a right-angle calculation and pose-estimator creation. The pose test requires working OpenCV/MediaPipe dependencies and may initialize model resources. They do not validate end-to-end video analysis or scoring accuracy.
+The geometry and pose tests cover a right-angle calculation and pose-estimator creation. The pose test requires working OpenCV/MediaPipe dependencies and may initialize model resources.
+
+For a dependency-free check of score aggregation and result serialization, run:
+
+```bash
+python -m unittest discover -s tests -p test_core.py -v
+```
+
+These regression tests cover missing-metric handling, score bounds, weighted combinations, JSON response fields and rounding, and independent default collections. They do not validate end-to-end video analysis or the scientific accuracy of the scoring thresholds.
 
 ## Current scope
 
